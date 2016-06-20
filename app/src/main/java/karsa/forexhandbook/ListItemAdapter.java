@@ -1,6 +1,8 @@
 package karsa.forexhandbook;
 
 import android.content.Context;
+import android.content.res.TypedArray;
+import android.graphics.drawable.Drawable;
 import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -55,14 +57,18 @@ public class ListItemAdapter extends BaseAdapter {
         rowView = inflater.inflate(R.layout.fx_item_list,null);
         holder.tv = (TextView)rowView.findViewById(R.id.itemText);
         holder.img = (ImageView)rowView.findViewById(R.id.itemView);
+        TypedArray imgs = context.getResources().obtainTypedArray(R.array.icons);
+        //Drawable drawable =  context.getResources().getDrawable(imageId[position]);
+
         holder.tv.setText(result[position]);
-        holder.img.setImageResource(imageId[position]);
+        holder.img.setImageResource(imgs.getResourceId(position,-1));
         rowView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
             }
         });
+        imgs.recycle();
         return rowView;
     }
 }
