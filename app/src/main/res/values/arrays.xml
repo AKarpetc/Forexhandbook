@@ -1,13 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <integer-array name="icons">
+    <array name="icons_1">
         <item>@drawable/ic_menu_gallery</item>
         <item>@drawable/ic_menu_gallery</item>
         <item>@drawable/ic_menu_gallery</item>
-    </integer-array>
-    <string-array name="labels">
+    </array>
+    <array name="chapter_1">
         <item>Глава 1</item>
         <item>Глава 2</item>
         <item>Глава 3</item>
-    </string-array>
+    </array>
+    <array name="icons_2">
+        <item>@drawable/ic_menu_gallery</item>
+        <item>@drawable/ic_menu_gallery</item>
+        <item>@drawable/ic_menu_gallery</item>
+    </array>
+    <array name="chapter_2">
+        <item>Глава 1</item>
+        <item>Глава 2</item>
+        <item>Глава 3</item>
+    </array>
 </resources>

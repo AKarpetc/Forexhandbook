@@ -16,12 +16,12 @@ import android.widget.TextView;
  */
 public class ListItemAdapter extends BaseAdapter {
 
-    String[] result;
+    TypedArray result;
     Context context;
-    int[] imageId;
+    TypedArray imageId;
     private static LayoutInflater inflater=null;
 
-    public ListItemAdapter(FragmentActivity mainActivity, String[] menuItemList, int[] itemsImages)
+    public ListItemAdapter(FragmentActivity mainActivity, TypedArray menuItemList, TypedArray itemsImages)
     {
         result = menuItemList;
         context = mainActivity;
@@ -29,9 +29,18 @@ public class ListItemAdapter extends BaseAdapter {
         inflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
+
+    public ListItemAdapter(FragmentActivity mainActivity, String[] menuItemList, int[] itemsImages)
+    {
+        //result = menuItemList;
+        context = mainActivity;
+        //imageId = itemsImages;
+        inflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+    }
+
     @Override
     public int getCount() {
-        return result.length;
+        return result.getIndexCount();
     }
 
     @Override
@@ -57,18 +66,17 @@ public class ListItemAdapter extends BaseAdapter {
         rowView = inflater.inflate(R.layout.fx_item_list,null);
         holder.tv = (TextView)rowView.findViewById(R.id.itemText);
         holder.img = (ImageView)rowView.findViewById(R.id.itemView);
-        TypedArray imgs = context.getResources().obtainTypedArray(R.array.icons);
+        //TypedArray imgs = context.getResources().obtainTypedArray(R.array.icons_1);
         //Drawable drawable =  context.getResources().getDrawable(imageId[position]);
 
-        holder.tv.setText(result[position]);
-        holder.img.setImageResource(imgs.getResourceId(position,-1));
+        holder.tv.setText(result.getResourceId(position,-1));
+        holder.img.setImageResource(imageId.getResourceId(position,-1));
         rowView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
             }
         });
-        imgs.recycle();
         return rowView;
     }
 }
